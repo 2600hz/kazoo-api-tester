@@ -8,7 +8,7 @@
 
 -export([search_account_by_name/2]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec search_account_by_name(pqc_cb_api:state(), kz_term:ne_binary()) -> pqc_cb_api:response().
 search_account_by_name(API, Name) ->

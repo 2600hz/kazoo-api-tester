@@ -31,9 +31,9 @@
         ,terminate/3
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
--define(LISTENER, 'kazoo_proper_httpd').
+-define(LISTENER, 'api_tester_httpd').
 
 %% {{Pid, MRef}, TRef, JSONPath}
 -type wait() :: {kz_term:pid_ref(), reference(), kz_json:path()}.

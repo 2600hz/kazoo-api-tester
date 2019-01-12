@@ -47,7 +47,7 @@
         ,unassign_dedicated_ip/2
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 -include_lib("kazoo_stdlib/include/kz_databases.hrl").
 
 %% #{"prefix" => cost}

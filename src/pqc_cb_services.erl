@@ -13,7 +13,7 @@
         ,cleanup/0
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec create_service_plan(pqc_cb_api:state(), kzd_service_plan:doc()) ->
                                  {'ok', kzd_service_plan:doc()}.

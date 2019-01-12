@@ -26,7 +26,7 @@
         ]).
 
 -include_lib("proper/include/proper.hrl").
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -define(ACCOUNT_NAMES, [<<"accountone">>]).
 -define(PHONE_NUMBERS, [<<"+12345678901">>]).

@@ -33,7 +33,7 @@
         ]).
 
 -include_lib("proper/include/proper.hrl").
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 -include_lib("kazoo_stdlib/include/kz_databases.hrl").
 
 -define(RATE_ID, <<"XX-1222">>).

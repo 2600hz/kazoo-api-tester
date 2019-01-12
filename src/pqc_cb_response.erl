@@ -15,7 +15,7 @@
         ,data/1
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec account_id(pqc_cb_api:response() | kz_json:object()) -> kz_term:ne_binary().
 account_id(JSON) when is_binary(JSON) ->

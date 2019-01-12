@@ -21,7 +21,7 @@
 
 -export_type([account_id/0]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -type account_id() :: {'call', 'pqc_kazoo_model', 'account_id_by_name', [pqc_cb_api:state() | proper_types:type()]} |
                       kz_term:ne_binary().

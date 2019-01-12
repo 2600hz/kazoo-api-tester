@@ -13,7 +13,7 @@
         ,query/3
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec create(pqc_cb_api:state(), string(), iolist()) -> pqc_cb_api:response().
 create(API, QueryString, CSV) ->

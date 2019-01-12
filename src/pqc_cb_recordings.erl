@@ -20,7 +20,7 @@
 
 -export([seq/0]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -define(ACCOUNT_NAMES, [<<"account_for_recordings">>]).
 
@@ -122,7 +122,7 @@ create_recording_doc() ->
                 ]
                ).
 
--define(MP3_FILE, filename:join([code:priv_dir('kazoo_proper'), <<"mp3.mp3">>])).
+-define(MP3_FILE, filename:join([code:priv_dir('api_tester'), <<"mp3.mp3">>])).
 create_attachment(MODB, DocId) ->
     File = ?MP3_FILE,
     AName = filename:basename(File, <<".mp3">>),

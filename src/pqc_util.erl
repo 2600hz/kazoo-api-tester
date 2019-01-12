@@ -11,7 +11,7 @@
         ,run_counterexample/1
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec transition_if(pqc_kazoo_model:model(), [{fun(), list()}]) -> pqc_kazoo_model:model().
 transition_if(CurrentModel, Checks) ->

@@ -39,7 +39,7 @@
 -export_type([dedicated/0]).
 
 -include_lib("proper/include/proper.hrl").
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -record('dedicated', {ip :: kz_term:api_ne_binary()
                      ,host :: kz_term:api_ne_binary()

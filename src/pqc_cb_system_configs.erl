@@ -21,11 +21,11 @@
         ,delete_config/2
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 -include_lib("kazoo_stdlib/include/kz_databases.hrl").
 
--define(CATEGORY_ID, <<"kazoo_proper">>).
--define(SCHEMA_ID, <<"system_config.kazoo_proper">>).
+-define(CATEGORY_ID, <<"api_tester">>).
+-define(SCHEMA_ID, <<"system_config.api_tester">>).
 -define(NODE_ID, <<"foo@bar.com">>).
 
 -define(KEY_SCHEMA, kz_json:from_list([{<<"type">>, <<"string">>}

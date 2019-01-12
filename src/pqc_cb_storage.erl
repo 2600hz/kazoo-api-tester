@@ -28,7 +28,7 @@
 %%         ]).
 
 -include_lib("proper/include/proper.hrl").
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 -include_lib("kazoo_stdlib/include/kz_databases.hrl").
 
 -define(ACCOUNT_NAMES, [<<"account_for_storage">>]).
@@ -151,7 +151,7 @@ base_test() ->
     ?INFO("create VM box: ~p", [CreateBox]),
     BoxId = kz_json:get_value([<<"data">>, <<"id">>], kz_json:decode(CreateBox)),
 
-    {'ok', MP3} = file:read_file(filename:join([code:priv_dir('kazoo_proper'), "mp3.mp3"])),
+    {'ok', MP3} = file:read_file(filename:join([code:priv_dir('api_tester'), "mp3.mp3"])),
     CreateVM = create_voicemail(API, AccountId, BoxId, MP3),
     ?INFO("create VM: ~p", [CreateVM]),
 

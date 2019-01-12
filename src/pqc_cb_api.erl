@@ -19,7 +19,7 @@
         ,set_log_level/1
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -define(TRACE_FORMAT
        ,[{'elapsed', <<"-0">>}, "|"
@@ -277,7 +277,7 @@ start_trace() ->
 
 -spec trace_path() -> file:filename_all().
 trace_path() ->
-    case application:get_env('kazoo_proper', 'trace_path') of
+    case application:get_env('api_tester', 'trace_path') of
         'undefined' -> "/tmp";
         {'ok', Path} -> Path
     end.
