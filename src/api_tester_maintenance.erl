@@ -4,7 +4,7 @@
 %%% @author James Aimonetti
 %%% @end
 %%%-----------------------------------------------------------------------------
--module(kazoo_proper_maintenance).
+-module(api_tester_maintenance).
 
 -export([run_modules/0
         ,run_module/1
@@ -12,7 +12,7 @@
         ,run_seq_module/1
         ]).
 
--include("kazoo_proper.hrl").
+-include("api_tester.hrl").
 
 -spec run_modules() -> 'no_return'.
 run_modules() ->
@@ -57,9 +57,9 @@ run_seq_module(ModuleBin) ->
 
 -spec modules() -> [module()].
 modules() ->
-    case application:get_key('kazoo_proper', 'modules') of
+    case application:get_key('api_tester', 'modules') of
         {'ok', Modules} -> Modules;
         'undefined' ->
-            'ok' = application:load('kazoo_proper'),
+            'ok' = application:load('api_tester'),
             modules()
     end.

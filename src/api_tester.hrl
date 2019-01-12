@@ -1,4 +1,4 @@
--ifndef(KAZOO_PROPER_HRL).
+-ifndef(API_TESTER_HRL).
 -include_lib("kazoo_stdlib/include/kz_types.hrl").
 -include_lib("kazoo_stdlib/include/kz_databases.hrl").
 
@@ -28,5 +28,5 @@
        ,_ = data:error(pqc_log:log_info(), Fmt, Args)
        ).
 
--define(KAZOO_PROPER_HRL, 'true').
+-define(API_TESTER_HRL, 'true').
 -endif.
