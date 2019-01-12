@@ -1,6 +1,6 @@
-{application, kazoo_proper,
+{application, api_tester,
  [
-  {description, "Kazoo Proper - Proper Statem and FSM testing"},
+  {description, "Kazoo API Tester - Proper Statem testing of Kazoo APIs"},
   {vsn, "4.0.0"},
   {modules, []},
   {registered, []},
