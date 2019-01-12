@@ -2,3 +2,4 @@
 /ebin/api_tester.app
 /.deps.mk
 make/circleci
+/priv/mp3.mp3
