@@ -4,29 +4,17 @@
 
 -define(FAILED_RESPONSE, <<"{}">>).
 
--define(DEBUG(Fmt)
-       ,_ = data:debug(pqc_log:log_info(), Fmt)
-       ).
+-define(CONFIG_CAT, <<"api_tester">>).
+-define(APP, 'api_tester').
 
--define(DEBUG(Fmt, Args)
-       ,_ = data:debug(pqc_log:log_info(), Fmt, Args)
-       ).
+-type api_call() :: {'call', module(), atom(), list()}.
+-type api_calls() :: [api_call()].
 
--define(INFO(Fmt)
-       ,_ = data:info(pqc_log:log_info(), Fmt)
-       ).
+-type http_response_code() :: pos_integer().
+-type http_response_body() :: binary().
 
--define(INFO(Fmt, Args)
-       ,_ = data:info(pqc_log:log_info(), Fmt, Args)
-       ).
-
--define(ERROR(Fmt)
-       ,_ = data:error(pqc_log:log_info(), Fmt)
-       ).
-
--define(ERROR(Fmt, Args)
-       ,_ = data:error(pqc_log:log_info(), Fmt, Args)
-       ).
+-type api_error() :: {'error', http_response_code(), http_response_body()}.
+-type api_result() :: {'ok', http_response_body()} | api_error().
 
 -define(API_TESTER_HRL, 'true').
 -endif.
