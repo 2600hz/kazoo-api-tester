@@ -72,9 +72,6 @@ setup() ->
     lager:debug("cleaning up before setup"),
     catch cleanup(),
 
-    lager:debug("creating parent account"),
-    {'ok', _} = pqc_accounts:create_account(),
-
     lager:info("SETUP COMPLETE").
 
 -spec correct_parallel() -> any().
@@ -98,11 +95,8 @@ correct_parallel() ->
 -spec initial_state() -> model().
 initial_state() ->
     {'ok', MasterAccountId} = kapps_util:get_master_account_id(),
-    {'ok', MasterAccountJObj} = kzd_accounts:fetch(MasterAccountId),
-    APIKey = kzd_accounts:api_key(MasterAccountJObj),
-    AuthToken = at_api_auth:get_auth_token(APIKey),
 
-    build_model(MasterAccountId, MasterAccountJObj, AuthToken).
+    kazoo_model:new(MasterAccountId).
 
 -spec command(model()) -> proper_types:type().
 command(Model) ->
@@ -128,14 +122,14 @@ precondition(_Model, {'call', ?MODULE, _F, _A}) -> 'true';
 precondition(Model, {'call', Module, _F, _A}=Call) ->
     Module:precondition(Model, Call).
 
--spec postcondition(model(), api_call(), api_result()) ->
+-spec postcondition(model(), api_call(), api_response()) ->
                            boolean().
 postcondition(_Model, {'call', ?MODULE, _F, _As}, Result) ->
     Result;
 postcondition(Model, {'call', Module, _F, _As}=Call, Result) ->
     Module:check_response(Model, Call, Result).
 
--spec next_state(model(), api_result(), api_call()) ->
+-spec next_state(model(), api_response(), api_call()) ->
                         model().
 next_state(Model, _Result, {'call', ?MODULE, _F, _As}) -> Model;
 next_state(Model, Result, {'call', Module, _F, _As}=Call) ->
@@ -230,22 +224,7 @@ printable_sut_response({'error', Code, Body}) ->
 printable_sut_response(Resp) ->
     kz_json:encode(Resp).
 
--spec build_model(kz_term:ne_binary(), kz_term:ne_binary(), kz_term:ne_binary()) -> model().
-build_model(MasterAccountId, MasterAccountJObj, AuthToken) ->
-    lager:info("STATE INITIALIZED for ~s", [MasterAccountId]),
-
-    #{'master_account_id' => MasterAccountId
-     ,'accounts' => add_account_to_accounts(MasterAccountJObj, #{})
-     ,'auth_token' => AuthToken
-     ,'test_id' => kz_util:get_callid()
-     }.
-
-add_account_to_accounts(AccountJObj, Accounts) ->
-    Name = kzd_accounts:name(AccountJObj),
-
-    Accounts#{Name => AccountJObj}.
-
--spec have_connectivity(model()) -> boolean().
+-spec have_connectivity(kazoo_model:model()) -> boolean().
 have_connectivity(Model) ->
     URL = at_util:base_url(),
     lager:debug("GET ~s", [URL]),

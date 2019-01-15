@@ -14,7 +14,7 @@
 -type http_response_body() :: binary().
 
 -type api_error() :: {'error', http_response_code(), http_response_body()}.
--type api_result() :: {'ok', http_response_body()} | api_error().
+-type api_response() :: {'ok', http_response_body()} | api_error().
 
 -define(API_TESTER_HRL, 'true').
 -endif.
